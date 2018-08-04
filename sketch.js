@@ -30,7 +30,7 @@ function predictionMade(err, result) {
 
 function draw() {
     background(0);
-    image(tmp, 0, 0, windowWidth, windowHeight - 100);
+    image(camera, 0, 0, windowWidth, windowHeight - 100);
     textSize(50);
     fill(255);
     let percentage = round(proba * 10000) / 100;
