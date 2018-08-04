@@ -9,6 +9,8 @@ function setup() {
         classifier = ml5.imageClassifier("MobileNet", camera, modelLoaded)
     }).parent("#wrapper");
 
+    camera.addClass("video");
+
     prediction = createP("Prediction").parent("#wrapper");
     proba = createP("Probability").parent("#wrapper");;
 }
@@ -25,7 +27,7 @@ function predictionMade(err, result) {
     } else {
         prediction.html(result[0].className);
         
-        let percentage = floor(results[0].probability * 1000) / 100
+        let percentage = floor(results[0].probability * 1000) / 100;
         proba.html(percentage);
 
         classifier.predict(camera, predictionMade);
