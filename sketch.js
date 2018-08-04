@@ -5,15 +5,12 @@ let prediction;
 let proba;
 
 function setup() {
-
-    prediction = createP("Prediction");
-    proba = createP("Probability");
-
-    prediction.innerHTML = "hallo";
     camera = createCapture(VIDEO, function () {
-        classifier = ml5.imageClassifier("MobileNet", camera, modelLoaded)
+        classifier = ml5.imageClassifier("MobileNet", camera, modelLoaded).parent("#wrapper");
     });
-    //camera.hide();
+
+    prediction = createP("Prediction").parent("#wrapper");
+    proba = createP("Probability").parent("#wrapper");;
 }
 
 function modelLoaded() {
