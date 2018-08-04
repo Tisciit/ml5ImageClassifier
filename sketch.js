@@ -27,7 +27,7 @@ function predictionMade(err, result) {
     } else {
         prediction.html(result[0].className);
         
-        let percentage = floor(results[0].probability * 1000) / 100;
+        let percentage = floor(result[0].probability * 1000) / 100;
         proba.html(percentage);
 
         classifier.predict(camera, predictionMade);
