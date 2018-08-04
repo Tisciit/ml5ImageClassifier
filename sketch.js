@@ -31,3 +31,5 @@ function predictionMade(err, result) {
         classifier.predict(camera, predictionMade);
     }
 }
+
+function draw(){}
