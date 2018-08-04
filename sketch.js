@@ -6,8 +6,8 @@ let proba;
 
 function setup() {
     camera = createCapture(VIDEO, function () {
-        classifier = ml5.imageClassifier("MobileNet", camera, modelLoaded).parent("#wrapper");
-    });
+        classifier = ml5.imageClassifier("MobileNet", camera, modelLoaded)
+    }).parent("#wrapper");
 
     prediction = createP("Prediction").parent("#wrapper");
     proba = createP("Probability").parent("#wrapper");;
