@@ -6,8 +6,10 @@ let proba;
 
 function setup() {
 
-    prediction = createP();
-    proba = createP();
+    prediction = createP("Prediction");
+    proba = createP("Probability");
+
+    prediction.innerHTML = "hallo";
     camera = createCapture(VIDEO, function () {
         classifier = ml5.imageClassifier("MobileNet", camera, modelLoaded)
     });
@@ -24,12 +26,13 @@ function predictionMade(err, result) {
         alert("We faced an issue, sorry :(");
         console.error(err);
     } else {
-        prediction.innerHTML = result[0].className;
-        proba.innerHTML = result[0].probability;
+        prediction.html(result[0].className);
+        proba.html(result[0].probability);
 
 
         classifier.predict(camera, predictionMade);
     }
 }
 
-function draw(){}
+function draw() {
+}
