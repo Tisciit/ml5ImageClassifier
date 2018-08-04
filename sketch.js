@@ -1,6 +1,5 @@
 let classifier;
 let camera;
-let tmp;
 
 let prediction;
 let proba;
@@ -13,7 +12,7 @@ function setup() {
 }
 
 function modelLoaded() {
-    console.log("loaded");
+    alert("ready");
     classifier.predict(camera, predictionMade)
 }
 
