@@ -11,7 +11,7 @@ function setup() {
     camera = createCapture(VIDEO, function () {
         classifier = ml5.imageClassifier("MobileNet", camera, modelLoaded)
     });
-    camera.hide();
+    //camera.hide();
 }
 
 function modelLoaded() {
