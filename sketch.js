@@ -36,3 +36,7 @@ function predictionMade(err, result) {
 
 function draw() {
 }
+
+function mouseDragged(){
+    return true;
+}
