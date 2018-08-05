@@ -75,7 +75,7 @@ function predictionMade(err, result) {
 function draw() {
     if (canPredict) {
         canPredict = false;
-        image(camera, 0, 0, innerWidth, innerHeight);
+        image(camera, 0, 0, width, height);
         classifier.predict(camera, predictionMade);
     }
 }
