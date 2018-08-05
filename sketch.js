@@ -10,7 +10,7 @@ let canPredict = false;
 
 function setup() {
 
-    createCanvas(innerWidth, innerHeight);
+    createCanvas(innerWidth, innerHeight).parent("#wrapper");
     //Initialize capture using "environment camera", "user" would be frontcamera"
     camera = createCapture({
         audio: false,
@@ -75,7 +75,7 @@ function predictionMade(err, result) {
 function draw() {
     if (canPredict) {
         canPredict = false;
-        image(0, 0, camera, innerWidth, innerHeight);
+        image(camera, 0, 0, innerWidth, innerHeight);
         classifier.predict(camera, predictionMade);
     }
 }
