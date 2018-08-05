@@ -4,25 +4,10 @@ html, body{
 }
 
 body {
-    font-size: 3em;
-    text-align: center;
-    background-color: grey;
+    margin: 0;
+    padding: 0;
 }
 
-#wrapper {
-    width: 90%;
-    height: 100%;
-    margin: 0 auto;
-}
-
-p {
-    background-color: black;
-    color: white;
-}
-
-video {
-    align-self: center;
-    max-width: 400%;
-    height: auto;
-    overflow: hidden;
+canvas {
+    display: block;
 }

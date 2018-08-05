@@ -10,7 +10,7 @@ let canPredict = false;
 
 function setup() {
 
-    createCanvas(innerWidth, innerHeight).parent("#wrapper");
+    createCanvas(windowWidth, windowHeight);
     //Initialize capture using "environment camera", "user" would be frontcamera"
     camera = createCapture({
         audio: false,
@@ -23,17 +23,13 @@ function setup() {
 
     camera.hide();
 
-    prediction = createP("Prediction").parent("#wrapper");
-    proba = createP("Probability").parent("#wrapper");
-    switchButton = createButton("Switch camera").parent("#wrapper");
-    switchButton.mousePressed(switchCamera);
-
     frameRate(4);
 }
 
 function switchCamera() {
     canPredict = false;
 
+    camera.dispose();
     if (camera_facingMode == "environment") {
         camera_facingMode = "user";
     } else {
@@ -52,6 +48,10 @@ function switchCamera() {
     camera.hide();
 }
 
+function windowResized(){
+    resizeCanvas(windowWidth, windowHeight);
+}
+
 function modelLoaded() {
     alert("Classifier is ready");
     classifier.predict(camera, predictionMade)
@@ -62,10 +62,10 @@ function predictionMade(err, result) {
         alert("We faced an issue, sorry :(");
         console.error(err);
     } else {
-        prediction.html(result[0].className);
+        prediction = result[0].className;
 
         let percentage = floor(result[0].probability * 10000) / 100;
-        proba.html(percentage);
+        proba = percentage;
 
         canPredict = true;
         //classifier.predict(camera, predictionMade);
@@ -74,8 +74,12 @@ function predictionMade(err, result) {
 
 function draw() {
     if (canPredict) {
+        background(55);
         canPredict = false;
-        image(camera, 0, 0, width, height);
+        image(camera, 0, 0, windowWidth * .95, windowHeight * .95);
+        textSize((windowHeight - windowHeight * .95) / 2);
+        fill(255);
+        text("I see " + prediction + " and am " + proba + " % sure about it", 0, windowHeight * .95 + textSize())
         classifier.predict(camera, predictionMade);
     }
 }
